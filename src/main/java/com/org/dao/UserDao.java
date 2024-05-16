@@ -1,54 +1,57 @@
 package com.org.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import java.util.ArrayList;
-import java.util.List;
+import javax.persistence.Query;
+
 import com.org.dto.User;
 
 public class UserDao {
-    private final EntityManagerFactory emf = Persistence.createEntityManagerFactory("Sonali");
+	
+	EntityManagerFactory emf = Persistence.createEntityManagerFactory("Sonali");
+    EntityManager em = emf.createEntityManager();
+    EntityTransaction et = em.getTransaction();  
+	
+public void saveAndUpdateUser(User user) {
+		et.begin();
+		em.merge(user);
+		et.commit();
+	}
+	
+public User fetchUserByEmailAndPassword(String email, String password) {
+	Query query = em.createQuery("SELECT u FROM User u WHERE u.email=?1 AND u.password=?2");
+	query.setParameter(1, email);
+	query.setParameter(2, password);
+	
+	List<User> list = query.getResultList();
+	
+	if(!list.isEmpty()) {
+	return list.get(0);	
+	}
+	return null;
+	}
 
-    public void saveAndUpdateUser(User user) {
-        EntityManager em = emf.createEntityManager();
-        EntityTransaction et = em.getTransaction();
+public User fetchUserById(int id) {
+	return em.find(User.class, id);
+	}
 
-        try {
-            et.begin();
-            em.persist(user); 
-            et.commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            em.close();
-        }
-    }
+public void DeleteUser(int id) {
+	User user = em.find(User.class, id);
+	et.begin();
+	em.remove(user);
+	et.commit();
+	}
 
-    public User verifyUserById(int id) {
-        EntityManager em = emf.createEntityManager();
-        EntityTransaction et = em.getTransaction();
-        try {
-            return em.find(User.class, id);
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            em.close();
-        }
-        return null;
-    }
+public void updatePassword(int id,String password) {
+	User user = em.find(User.class, id);
+	user.setPassword(password);
+	et.begin();
+	em.merge(user); 
+	et.commit();
+	}
 
-    public List<User> fetchAllUsers() {
-        EntityManager em = emf.createEntityManager();
-        EntityTransaction et = em.getTransaction();
-        try {
-            return em.createQuery("SELECT u FROM User u", User.class).getResultList();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            em.close();
-        }
-        return new ArrayList<>();
-    }
 }

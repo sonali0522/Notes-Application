@@ -36,10 +36,7 @@ public class RegisterServlet extends HttpServlet {
         
         HttpSession session = req.getSession();
         session.setAttribute("success", "Registration Successful");
-        resp.sendRedirect("register.jsp");
-		
+        resp.sendRedirect("register.jsp");		
 	}
-
-
-	}
+}
 

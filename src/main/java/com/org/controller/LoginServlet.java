@@ -19,19 +19,18 @@ public class LoginServlet extends HttpServlet{
 		
 		String email = req.getParameter("email");
 		String password = req.getParameter("password");
-		
-		int id = Integer.parseInt(req.getParameter("id"));
+
 		UserDao dao = new UserDao();
-		User user = dao.verifyUserById(id);
+		User user = dao.fetchUserByEmailAndPassword(email, password);
 		
 		HttpSession session = req.getSession();
 		if (user != null) {
 			session.setAttribute("userObj", user);
-			
-			// Debug statements
-	        System.out.println("User authenticated: " + user.getName()); // Print user name
-	        System.out.println("Session attribute userObj set: " + session.getAttribute("userObj")); // Print session attribute
 			resp.sendRedirect("home.jsp");
+			
+	        System.out.println("User authenticated: " + user.getName());
+	        System.out.println("Session attribute userObj set: " + session.getAttribute("userObj")); 
+	
 		} else {
 			session.setAttribute("fail", "Invalid Credentials");
 			resp.sendRedirect("login.jsp");
