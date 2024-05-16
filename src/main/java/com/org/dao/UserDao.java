@@ -16,42 +16,53 @@ public class UserDao {
     EntityManager em = emf.createEntityManager();
     EntityTransaction et = em.getTransaction();  
 	
-public void saveAndUpdateUser(User user) {
+   public void saveAndUpdateUser(User user) {
+	   
 		et.begin();
 		em.merge(user);
 		et.commit();
 	}
 	
-public User fetchUserByEmailAndPassword(String email, String password) {
-	Query query = em.createQuery("SELECT u FROM User u WHERE u.email=?1 AND u.password=?2");
-	query.setParameter(1, email);
-	query.setParameter(2, password);
+    public User fetchUserByEmailAndPassword(String email, String password) {
+    	
+	    Query query = em.createQuery("SELECT u FROM User u WHERE u.email=?1 AND u.password=?2");
+	    query.setParameter(1, email);
+	    query.setParameter(2, password);
+	    
+	    List<User> list = query.getResultList();
 	
-	List<User> list = query.getResultList();
-	
-	if(!list.isEmpty()) {
-	return list.get(0);	
+	    if(list.isEmpty())
+		   return null;
+	  
+	    return list.get(0);
+    }	  
+
+    public User fetchUserById(int id) {
+    	
+	    return em.find(User.class, id);
 	}
-	return null;
+    
+    public List<User> fetchAllUsers() {
+       
+  	  Query query = em.createQuery("SELECT u FROM User u");
+  	  List<User> list = query.getResultList();
+  	   return list;
+    }
+
+    public void DeleteUser(int id) {
+    	
+	    User user = em.find(User.class, id);
+	    et.begin();
+	    em.remove(user);
+	    et.commit();
 	}
 
-public User fetchUserById(int id) {
-	return em.find(User.class, id);
+    public void updatePassword(int id,String password) {
+    	
+	    User user = em.find(User.class, id);
+	    user.setPassword(password);
+	    et.begin();
+	    em.merge(user); 
+	    et.commit();
 	}
-
-public void DeleteUser(int id) {
-	User user = em.find(User.class, id);
-	et.begin();
-	em.remove(user);
-	et.commit();
-	}
-
-public void updatePassword(int id,String password) {
-	User user = em.find(User.class, id);
-	user.setPassword(password);
-	et.begin();
-	em.merge(user); 
-	et.commit();
-	}
-
 }

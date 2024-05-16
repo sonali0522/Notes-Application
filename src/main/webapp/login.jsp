@@ -13,8 +13,6 @@
   </head>
   <body class="bg-lightblue text-black">
     <%@ include file="components/navbar.jsp"%>
-
-     
       <div class="container p-5">
 		<div class="row">
 			<div class="col-md-4 offset-md-4">

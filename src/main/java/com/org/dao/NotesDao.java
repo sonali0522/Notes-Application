@@ -12,19 +12,21 @@ import com.org.dto.Notes;
 import com.org.dto.User;
 
 public class NotesDao {
-	static	EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("Sonali");  
-	static  EntityManager eManager =entityManagerFactory.createEntityManager();
-	static	EntityTransaction entityTransaction=eManager.getTransaction();  
+	
+	EntityManagerFactory emf = Persistence.createEntityManagerFactory("Sonali");
+    EntityManager em = emf.createEntityManager();
+    EntityTransaction et = em.getTransaction();  
 
 	
-	public static Notes fetchNoteById(int id) {
-		Notes note = eManager.find(Notes.class, id);
-		return note;
-		}
-	
-	public static  List<Notes> fetchAllNotes() {
-		Query query = eManager.createQuery("SELECT s FROM Notes s");
-		List list = query.getResultList();
-		return list;
-	}
+    public Notes fetchNoteById(int id)
+    {
+  	  Notes note = em.find(Notes.class, id);
+  	  return note;  
+    }
+    public List<Notes> fetchAllNotes()
+    {
+  	  Query query = em.createQuery("SELECT n FROM Notes n");
+  	  List<Notes> list = query.getResultList();
+  	  return list;
+    }
 }

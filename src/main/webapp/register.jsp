@@ -51,7 +51,6 @@
 							</div>
 							<button type="submit" class="btn bg-lightblue text-black col-md-12">Register</button>
 						</form>
-
 					</div>
 				</div>
 			</div>
