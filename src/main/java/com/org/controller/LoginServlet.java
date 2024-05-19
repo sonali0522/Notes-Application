@@ -25,11 +25,11 @@ public class LoginServlet extends HttpServlet{
 		
 		HttpSession session = req.getSession();
 		if (user != null) {
-			session.setAttribute("userObj", user);
+			session.setAttribute("userData", user);
 			resp.sendRedirect("home.jsp");
 			
-	        System.out.println("User authenticated: " + user.getName());
-	        System.out.println("Session attribute userObj set: " + session.getAttribute("userObj")); 
+	        //System.out.println("User authenticated: " + user.getName());
+	        //System.out.println("Session attribute userObj set: " + session.getAttribute("userObj")); 
 	
 		} else {
 			session.setAttribute("fail", "Invalid Credentials");

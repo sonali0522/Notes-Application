@@ -5,9 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>NinjaScroll</title>
   <%@ include file="components/bootstrapCss.jsp"%>
-  <style>
+ <style>
     .bg-lightblue {
       background-color: LightBlue;
+    }
+    .btn.bg-lightblue:hover {
+        background-color: LightBlue;
     }
   </style>
 </head>
@@ -20,8 +23,8 @@
         <img src="giphy.gif" class="d-block mx-lg-auto img-fluid" alt="Theme" width="300" height="300" loading="lazy">
       </div>
       <div class="col-lg-6">
-        <h1 class="display-5 fw-bold lh-1 mb-3">NinjaScroll</h1>
-        <p class="lead">Step up your note-taking game with this innovative tool. Engineered for streamlined organization and productivity, it's your go-to solution for capturing ideas, managing tasks, and staying ahead of the curve. With intuitive features and seamless syncing across devices, you can rely on it to keep your notes accessible anytime, anywhere. Simplify your workflow and unlock your full potential with this indispensable companion.</p>
+        <h1 style="font-family:cursive;" class= "display-5 fw-bold lh-1 mb-3">NinjaScroll</h1>
+        <p class="lead" style="font-family:cursive;">Step up your note-taking game with this innovative tool. Engineered for streamlined organization and productivity, it's your go-to solution for capturing ideas, managing tasks, and staying ahead of the curve. With intuitive features and seamless syncing across devices, you can rely on it to keep your notes accessible anytime, anywhere. Simplify your workflow and unlock your full potential with this indispensable companion.</p>
       </div>
     </div>
   </div>

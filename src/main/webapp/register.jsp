@@ -9,6 +9,9 @@
     .bg-lightblue {
       background-color: LightBlue;
     }
+    .btn.bg-lightblue:hover {
+        background-color: LightBlue;
+    }
   </style>
   </head>
   <body class="bg-lightblue text-black">
@@ -23,33 +26,33 @@
 						String msg = (String) session.getAttribute("success");
 						if (msg != null) {
 						%>
-						 <p class="text-center text-success fs-4"> <%=msg%></p>
+						 <p class="text-center text-success fs-4" style="font-family:cursive;"> <%=msg%></p>
 						<%
 						session.removeAttribute("success");
 						}
 						%>
 						<form action="register" method="post">
 							<div class="mb-3">
-								<label class="form-label">Name</label> <input name="name"
+								<label class="form-label" style="font-family:cursive;">Name</label> <input name="name"
 									type="text" class="form-control" required>
 							</div>
 							<div class="mb-3">
-								<label class="form-label">Age</label> <input name="age"
+								<label class="form-label" style="font-family:cursive;">Age</label> <input name="age"
 									type="tel" class="form-control" required>
 							</div>
 							<div class="mb-3">
-								<label class="form-label">Mobile</label> <input name="mobile"
+								<label class="form-label" style="font-family:cursive;">Mobile</label> <input name="mobile"
 									type="tel" class="form-control" required>
 							</div>
 							<div class="mb-3">
-								<label class="form-label">Email Address</label> <input
+								<label class="form-label" style="font-family:cursive;">Email Address</label> <input
 									name="email" type="email" class="form-control" required>
 							</div>
 							<div class="mb-3">
-								<label class="form-label">Password</label> <input
+								<label class="form-label" style="font-family:cursive;">Password</label> <input
 									name="password" type="password" class="form-control" required>
 							</div>
-							<button type="submit" class="btn bg-lightblue text-black col-md-12">Register</button>
+							<button type="submit" class="btn bg-lightblue text-black col-md-12" style="font-family:cursive;">Register</button>
 						</form>
 					</div>
 				</div>

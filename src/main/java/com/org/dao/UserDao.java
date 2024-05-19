@@ -25,7 +25,9 @@ public class UserDao {
 	
     public User fetchUserByEmailAndPassword(String email, String password) {
     	
-	    Query query = em.createQuery("SELECT u FROM User u WHERE u.email=?1 AND u.password=?2");
+    	String q = "select u from User u where email=?1 and password =?2";
+    	
+	    Query query = em.createQuery(q);
 	    query.setParameter(1, email);
 	    query.setParameter(2, password);
 	    
@@ -49,18 +51,10 @@ public class UserDao {
   	   return list;
     }
 
-    public void DeleteUser(int id) {
+    public void updateUserPasswordById(int id, String newPassword) {
     	
 	    User user = em.find(User.class, id);
-	    et.begin();
-	    em.remove(user);
-	    et.commit();
-	}
-
-    public void updatePassword(int id,String password) {
-    	
-	    User user = em.find(User.class, id);
-	    user.setPassword(password);
+	    user.setPassword(newPassword);
 	    et.begin();
 	    em.merge(user); 
 	    et.commit();

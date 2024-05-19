@@ -16,7 +16,6 @@ public class NotesDao {
 	EntityManagerFactory emf = Persistence.createEntityManagerFactory("Sonali");
     EntityManager em = emf.createEntityManager();
     EntityTransaction et = em.getTransaction();  
-
 	
     public Notes fetchNoteById(int id)
     {
