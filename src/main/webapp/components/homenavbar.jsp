@@ -11,12 +11,12 @@
 			%>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">           
-                <li class="nav-item fs-5 mx-2"><a class="nav-link active bg-lightblue text-black rounded-3 py-1 px-2"
+                <li class="nav-item fs-6 me-2"><a class="nav-link active bg-lightblue text-black rounded-3 py-1 px-2"
                     aria-current="page" href="profile.jsp" style="font-family:cursive;">Profile</a></li>
-                <li class="nav-item fs-5 mx-2"><a class="nav-link active bg-lightblue text-black rounded-3 py-1 px-2"
+                <li class="nav-item fs-6 me-2"><a class="nav-link active bg-lightblue text-black rounded-3 py-1 px-2"
                     aria-current="page" href="changePassword.jsp?id=<%= use.getId() %>" style="font-family:cursive;">Change Password</a></li>
-                <li class="nav-item fs-5 mx-2"><a class="nav-link active bg-lightblue text-black rounded-3 py-1 px-2"
-                    aria-current="page" href="isLogOut.jsp" style="font-family:cursive;">Logout</a></li>    
+                <li class="nav-item fs-6 me-2"><a class="nav-link active bg-lightblue text-black rounded-3 py-1 px-2"
+                    aria-current="page" href="logout.jsp" style="font-family:cursive;">Logout</a></li>    
             </ul>
         </div>
         </div>

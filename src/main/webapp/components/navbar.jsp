@@ -10,7 +10,7 @@
                 <li class="nav-item fs-6 me-2">
                     <a class="nav-link active bg-lightblue text-black rounded-3 py-1 px-2" aria-current="page" href="register.jsp" style="font-family:cursive;">Register</a>
                 </li>
-                <li class="nav-item fs-6">
+                <li class="nav-item fs-6 me-2">
                     <a class="nav-link active bg-lightblue text-black rounded-3 py-1 px-2" aria-current="page" href="login.jsp" style="font-family:cursive;">Login</a>
                 </li>
             </ul>
